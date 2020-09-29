@@ -8,6 +8,9 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+import random
+import os
+
 app = Flask(__name__)
 
 # Channel Access Token
