@@ -8,6 +8,8 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+from flask_sqlalchemy import SQLAlchemy
+
 import random
 import os
 
