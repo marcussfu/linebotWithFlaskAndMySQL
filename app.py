@@ -54,8 +54,8 @@ def handle_message(event):
     # print(db.engine.execute(sql_cmd).fetchall())
     print(query_data.fetchone())
 
-    message = TextSendMessage(text=event.message.text)
-    line_bot_api.reply_message(event.reply_token, message+'  '+query_data.fetchone())
+    message = TextSendMessage(text=event.message.text+'  '+query_data.fetchone())
+    line_bot_api.reply_message(event.reply_token, message)
 
 import os
 if __name__ == "__main__":
