@@ -52,7 +52,7 @@ def handle_message(event):
     sql_cmd = """select name from users"""
     query_data = db.engine.execute(sql_cmd)
     # print(db.engine.execute(sql_cmd).fetchall())
-    print('#########   ', query_data.fetchone()[0])
+    # print('#########   ', query_data.fetchone()[0])
 
     message = TextSendMessage(text=event.message.text+'   '+query_data.fetchone()[0])
     line_bot_api.reply_message(event.reply_token, message)
