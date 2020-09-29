@@ -48,8 +48,7 @@ def handle_message(event):
     # query_data = db.engine.execute(sql_cmd)
     # print(query_data)
     # return 'ok'
-    query_data = db.engine.execute('select * from users')
-    print(query_data)
+    query_data = db.engine.execute("""select * from users""")
 
     message = TextSendMessage(text=event.message.text)
     line_bot_api.reply_message(event.reply_token, message)
