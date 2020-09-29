@@ -44,11 +44,6 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    # sql_cmd = """select * from users"""
-    # query_data = db.engine.execute(sql_cmd)
-    # print(query_data)
-    # return 'ok'
-
     sql_cmd = """select name from users"""
     query_data = db.engine.execute(sql_cmd)
     # print(db.engine.execute(sql_cmd).fetchall())
