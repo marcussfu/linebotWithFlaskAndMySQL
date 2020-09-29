@@ -1,17 +1,24 @@
 from flask import Flask, request, abort
-
-from linebot import (
-    LineBotApi, WebhookHandler
-)
-from linebot.exceptions import (
-    InvalidSignatureError
-)
+from flaskext.mysql import MySQL
+from linebot import LineBotApi, WebhookHandler
+from linebot.exceptions import InvalidSignatureError
 from linebot.models import *
+import random
+import os
 
+mysql = MySQL()
 app = Flask(__name__)
 
+# MySQL configurations
+app.config['MYSQL_DATABASE_HOST'] = os.environ.get('DB_HOST')
+app.config['MYSQL_DATABASE_PORT'] = 3306
+app.config['MYSQL_DATABASE_USER'] = os.environ.get('DB_USER')
+app.config['MYSQL_DATABASE_PASSWORD'] = os.environ.get('DB_PASSWORD')
+app.config['MYSQL_DATABASE_DB'] = os.environ.get('DB_SCHEMA')
+mysql.init_app(app)
+
 # Channel Access Token
-line_bot_api = LineBotApi('Boxq2+7Qvf9wrFJDxndfidlL77O5XfMliBBFfy5Rk1PlHtEztdgDJ6WSjK0wmQPtzXF/sGH4Q1ruqdxVFd39/6GA3uf4pF2hzfq9msmKHjmDO/UMaIdmmiiqp0GdDND9M5ZS29fyLcNEVRb9W/vRowdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('N6EH/sRKbfIQO6moywQ11ZDhhu4tLp2Vq8KZLeQeXojim+jfkdVHCdbuSRy4Bh+ZzXF/sGH4Q1ruqdxVFd39/6GA3uf4pF2hzfq9msmKHjnD1HTC5Xyz7LjatSO2zxzgEtXAz0ZqYT3Kk5ih0m315QdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
 handler = WebhookHandler('2c03d2503de5fa94a58018c4857d4499')
 
