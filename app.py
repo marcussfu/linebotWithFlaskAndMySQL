@@ -49,14 +49,13 @@ def handle_message(event):
     # print(query_data)
     # return 'ok'
 
-    sql_cmd = """
-        select * from users
-    """
+    sql_cmd = """select name from users"""
     query_data = db.engine.execute(sql_cmd)
-    print(db.engine.execute(sql_cmd).fetchall())
+    # print(db.engine.execute(sql_cmd).fetchall())
+    print(query_data.fetchone())
 
     message = TextSendMessage(text=event.message.text)
-    line_bot_api.reply_message(event.reply_token, message)
+    line_bot_api.reply_message(event.reply_token, message+'  '+query_data.fetchone())
 
 import os
 if __name__ == "__main__":
