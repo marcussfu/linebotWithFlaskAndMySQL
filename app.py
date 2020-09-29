@@ -53,7 +53,7 @@ def handle_message(event):
         select * from users
     """
     query_data = db.engine.execute(sql_cmd)
-    print(query_data)
+    print(db.engine.execute(sql_cmd).fetchall())
 
     message = TextSendMessage(text=event.message.text)
     line_bot_api.reply_message(event.reply_token, message)
