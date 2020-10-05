@@ -17,14 +17,14 @@ db = SQLAlchemy()
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://sql12367906:Khl3ZDcMda@sql12.freemysqlhosting.net:3306/sql12367906"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://user_name:password@IP:3306/db_name"
 
 db.init_app(app)
 
 # Channel Access Token
-line_bot_api = LineBotApi('N6EH/sRKbfIQO6moywQ11ZDhhu4tLp2Vq8KZLeQeXojim+jfkdVHCdbuSRy4Bh+ZzXF/sGH4Q1ruqdxVFd39/6GA3uf4pF2hzfq9msmKHjnD1HTC5Xyz7LjatSO2zxzgEtXAz0ZqYT3Kk5ih0m315QdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('channel access token')
 # Channel Secret
-handler = WebhookHandler('2c03d2503de5fa94a58018c4857d4499')
+handler = WebhookHandler('channel secret')
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
