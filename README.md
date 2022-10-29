@@ -7,54 +7,48 @@
 確保您具有以下內容：
 
 - 擁有 Line 帳號
-- 擁有 [Heroku](https://www.heroku.com) 帳戶（您可以免費創建一個）
+- 擁有 [Heroku](https://www.heroku.com) 帳戶（可以免費創建一個）
 
 ## 建立 Heroku 專案
 1. 登入 Heroku 後，
   在 [Heroku](https://dashboard.heroku.com/apps) 頁面中，點選 New -> Create New App
-  ![](https://i.imgur.com/Y3njp7I.png)
+  ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro1.png)
 2. 輸入自己喜歡的 App name ，然後點擊 Create app
-  ![](https://i.imgur.com/WJ85jXR.png)
+  ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro2.png)
+
+3. 可以看到建置完成的畫面
+  ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro3.png)
 
 ## 創建 Line Bot 頻道
-1. 進入 [Line 控制台](https://developers.line.me/console/)
-    ![](https://i.imgur.com/vseYQt1.png)
-2. 創建提供者
-    ![](https://i.imgur.com/0tnYFBd.png)
-3. 填入提供者名稱
-    ![](https://i.imgur.com/2ne3H1F.png)
-4. 點擊 Create
-    ![](https://i.imgur.com/bdESW8G.png)
-5. 點擊 Create Channel
-    ![](https://i.imgur.com/F1nAWhK.png)
-6. 填入 Bot 資訊
-    ![](https://i.imgur.com/3wYFSvl.png)
-7. 同意 Line 條款，並按 Create
-    ![](https://i.imgur.com/WNzl4sL.png)
-8. 選擇剛剛創建的 Bot
-    ![](https://i.imgur.com/6ocsOBW.png)
+1.  進入 [Line 控制台](https://developers.line.me/console/)
+
+2.  Create Channel
+    ![iamge](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro4.png)
+3. 填入 Bot 資訊
+    ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro5.png)
+4. 填入 Bot 資訊 1
+    ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro6.png)
+5. 同意 Line 條款，並按 Create
+    ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro7.png)
 
 ## 設定機器人
 
 按照以下步驟架設一個回話機器人。
 
 1. 進入 [Line 控制台](https://developers.line.me/console/)，選擇你剛剛創建的機器人
-    ![](https://i.imgur.com/6ocsOBW.png)
-3. 開啟 webhook
-![](https://i.imgur.com/nxvFPB1.png)
-![](https://i.imgur.com/PzEKzdq.png)
-4. 關閉預設罐頭回覆訊息
-![](https://i.imgur.com/nXPRhT4.png)
+    ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro8.png)
+2. 關閉預設罐頭回覆訊息，點擊edit
+    ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro9.png) 
+   也開啟Webhook
+    ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro10.png)
+   儲存後修改結果
+    ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro11.png)
+3. 點擊"Channel access token"的issue產生 **Channel access token**
+    ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro12.png)
+4. 取得 **Channel secret**
+    ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro13.png)
 
-5. 產生 **Channel access token**
-![](https://i.imgur.com/QyxnpZB.png)
-![](https://i.imgur.com/quYbPx9.png)
-6. 取得 **Channel access token**
-![](https://i.imgur.com/C7OTect.png)
-7. 取得 **Channel secret**
-![](https://i.imgur.com/IwmvyzL.png)
-
-6. 使用編輯器開啟範例程式碼資料夾內的 app.py，將剛剛取得的 **channel secret** 和 **channel access token** 填入
+5. 使用編輯器開啟範例程式碼資料夾內的 app.py，將剛剛取得的 **channel secret** 和 **channel access token** 填入
   ```shell＝
   // Channel Access Token
   line_bot_api = LineBotApi('channel access token')
@@ -65,9 +59,15 @@
 ## 設定連結MySQL
 
 這邊要測試連結MySQL，藉由使用者詢問資訊，去資料庫中搜尋相關字詞資料。
+連結MYSQL有很多種方式，可以在aws等網路空間建置，或者在heroku使用"ClearDB MySQL"服務
+這邊是為了測試功能，使用了MySQL免費網路服務 "https://www.freemysqlhosting.net/"
+在freemysqlhosting申請一個測試用的MySQL資料庫，就可以將這個資料庫的帳號密碼和資料庫名稱等輸入至app.py的"app.config['SQLALCHEMY_DATABASE_URI']"
+
 ```shell＝
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://user_name:password@IP:3306/db_name"
+
+ex: app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://sql12345:password@sql12.freemysqlhosting.net:3306/sql12345"
 
 // user_name: database登入使用者名稱
 // password: database登入使用者密碼
@@ -186,5 +186,8 @@ lineBot教學
 
 如何 使用flask 連結 MySQL
 (https://www.maxlist.xyz/2019/11/10/flask-sqlalchemy-setting/)
+
+MySQL的免費網路測試服務(freemysqlhosting.net)
+(https://www.freemysqlhosting.net/)
 
 
