@@ -59,8 +59,11 @@
 ## 設定連結MySQL
 
 這邊要測試連結MySQL，藉由使用者詢問資訊，去資料庫中搜尋相關字詞資料。
+
 連結MYSQL有很多種方式，可以在aws等網路空間建置，或者在heroku使用"ClearDB MySQL"服務
+
 這邊是為了測試功能，使用了MySQL免費網路服務 "https://www.freemysqlhosting.net/"
+
 在freemysqlhosting申請一個測試用的MySQL資料庫，就可以將這個資料庫的帳號密碼和資料庫名稱等輸入至app.py的"app.config['SQLALCHEMY_DATABASE_URI']"
 
 ```shell＝
