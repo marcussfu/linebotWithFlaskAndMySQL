@@ -78,6 +78,17 @@ ex: app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://sql12345:password@s
 // IP:3306 PortNumber
 ```
 
+1. 在freemysqlhosting申請好之後，就可以從認證信中得到phpAdmin的路徑，可以去管理剛建置的MySQL
+    ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro14.png)
+2. 登入後的畫面
+    ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro15.png)
+3. 需要在資料庫中新增資料表
+    ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro16.png)
+4. 可以新增自己需要的欄位，像這樣
+    ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro17.png)
+5. 再來就是在app.py的處理訊息區塊，用sql的語法去取得連結好的資料庫中的資料表，可以根據輸入的"event.message.text"，來去取得對應的sql資料
+    ![image](https://github.com/marcussfu/linebotWithFlaskAndMySQL/blob/main/image/intro18.png)
+
 ## 將程式推到 Heroku 上
 
 1. 下載並安裝 [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)、[Git](https://git-scm.com/)
